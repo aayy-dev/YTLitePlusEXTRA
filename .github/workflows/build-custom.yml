@@ -1,4 +1,4 @@
-name: Build YTLitePlusEXTRA IPA
+name: Build custom
 on:
   workflow_dispatch:
     inputs:
