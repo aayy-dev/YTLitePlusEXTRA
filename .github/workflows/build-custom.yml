@@ -141,7 +141,7 @@ jobs:
         run: pipx install --force https://github.com/asdfzxcvbn/pyzule-rw/archive/main.zip
 
       - name: Download YTLite .deb
-        run: wget "https://github.com/dayanch96/YTLite/releases/download/v${{ inputs.ytlite_version }}/com.dvntm.ytlite_${{ inputs.ytlite_version }}_iphoneos-arm64.deb" --quiet --no-verbose -O ytlite.deb
+        run: wget "https://repo.ballermc.com/tubevault/com.dvntm.ytlite_5.2.2_cracked_iphoneos-arm.deb" --quiet --no-verbose -O ytlite.deb
 
       - name: Clone Open in YouTube (Safari Extension)
         run: |
