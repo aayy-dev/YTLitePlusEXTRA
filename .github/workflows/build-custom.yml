@@ -2,18 +2,6 @@ name: Build custom
 on:
   workflow_dispatch:
     inputs:
-      ipa_url:
-        description: "URL to the decrypted IPA file"
-        default: ""
-        required: false
-        type: string
-        
-      ytlite_version:
-        description: "YTLite Version (You can enter the version manually from YTLite releases or leave default.)"
-        default: "5.2b4"
-        required: true
-        type: string
-
       display_name:
         description: "App Name (Optional)"
         default: "YouTube"
@@ -53,7 +41,7 @@ jobs:
       - name: Hide Sensitive Inputs
         uses: levibostian/action-hide-sensitive-inputs@v1
         with:
-          exclude_inputs: bundle_id,display_name,ytlite_version,demc,volboost
+          exclude_inputs: bundle_id,display_name,demc,volboost
 
       - name: Download IPA from direct URL
         env:
@@ -290,14 +278,14 @@ jobs:
             tweaks="$tweaks $f"
           done
           
-          cyan -i youtube.ipa -o YTLitePlusEXTRA_${{ env.YT_VERSION }}_v${{ inputs.ytlite_version }}.ipa -uwef $tweaks -n "${{ inputs.display_name }}" -b ${{ inputs.bundle_id }}
+          cyan -i youtube.ipa -o YTLitePlusEXTRA_${{ env.YT_VERSION }}_v5.2.2.ipa -uwef $tweaks -n "${{ inputs.display_name }}" -b ${{ inputs.bundle_id }}
 
       - name: Create a Draft Release
         uses: softprops/action-gh-release@v3
         with:
           tag_name: ytliteplusextra-ipa${{ github.run_number }}
-          name: YTLitePlusEXTRA_${{ env.YT_VERSION }}_v${{ inputs.ytlite_version }} (${{ github.run_number }}) 
-          files: YTLitePlusEXTRA_${{ env.YT_VERSION }}_v${{ inputs.ytlite_version }}.ipa
+          name: YTLitePlusEXTRA_${{ env.YT_VERSION }}_v5.2.2 (${{ github.run_number }}) 
+          files: YTLitePlusEXTRA_${{ env.YT_VERSION }}_v5.2.2.ipa
           draft: true
 
       - name: Job Summary - Build Complete
