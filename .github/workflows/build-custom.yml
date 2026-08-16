@@ -59,7 +59,7 @@ jobs:
         env:
           IPA_URL: ${{ secrets.IPA_URL }}
         run: |
-          wget "$IPA_URL" --quiet --no-verbose -O youtube.ipa
+          curl -L -o youtube.ipa "$IPA_URL"
 
       - name: Validate IPA
         run: |
